@@ -7,14 +7,17 @@ def chars_match(c1, c2):
 
 def react(p):
     stable = False
+    p_len = len(p)
     while not stable:
-        for i in range(0, len(p)-1):
+        stable = True
+        i=0
+        while i < p_len-1:
             if chars_match(p[i], p[i+1]):
                 del p[i:i+2]
-                #print(p)
-                break
-        else:
-            stable = True
+                stable = False
+                p_len -= 2
+            else:
+                i += 1
 
     return len(p)
 
