@@ -5,35 +5,41 @@ def chars_match(c1, c2):
     return abs(ord(c1)-ord(c2)) == 32
 
 
-def main():
-    f = open('input.txt', 'r')
-    s = f.read().strip()
-    f.close()
-
-    p = list(s)
-    p = list('dabAcCaCBAcCcaDA')
-    variants = []
-    #pairs = zip(string.ascii_lowercase, string.ascii_uppercase)
-    pairs = zip('abcd','ABCD')
-    for c1,c2 in pairs:
-        p2 = p[:]
-        p2.remove(c1)
-        p2.remove(c2)
-        variants.append(p2)
-
-    pprint(variants)
-
+def react(p):
     stable = False
     while not stable:
-        for i, c in enumerate(p[:-1]):
-            if chars_match(c, p[i+1]):
+        for i in range(0, len(p)-1):
+            if chars_match(p[i], p[i+1]):
                 del p[i:i+2]
                 #print(p)
                 break
         else:
             stable = True
 
-    print(len(p))
+    return len(p)
+
+
+def main():
+    f = open('input.txt', 'r')
+    s = f.read().strip()
+    f.close()
+
+    #s = 'dabAcCaCBAcCcaDA'
+
+    p = list(s)
+
+    print(react(p))
+
+    pairs = zip(string.ascii_lowercase, string.ascii_uppercase)
+    #pairs = zip('abcd','ABCD')
+    variant_lens = []
+    for c1,c2 in pairs:
+        s2 = s.replace(c1,'').replace(c2,'')
+        variant_len = react(list(s2))
+        print(variant_len)
+        variant_lens.append(variant_len)
+
+    print(min(variant_lens))
 
 
 if __name__ == '__main__':
