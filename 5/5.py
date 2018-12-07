@@ -39,7 +39,7 @@ def main():
     for c1,c2 in pairs:
         s2 = s.replace(c1,'').replace(c2,'')
         variant_len = react(list(s2))
-        print(variant_len)
+        #print(variant_len)
         variant_lens.append(variant_len)
 
     print(min(variant_lens))
