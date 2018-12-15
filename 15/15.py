@@ -1,5 +1,4 @@
 from operator import attrgetter
-from itertools import chain
 import numpy as np
 
 EMPTY, WALL, ELF, GOBLIN = ['.', '#', 'E', 'G']
@@ -87,9 +86,6 @@ def grow(boundary_set, test_set, scratch):
 
     new_boundary_set = set([p for pos in boundary_set for p in get_empty_neighbors(pos, scratch)])
     return grow(new_boundary_set, test_set, scratch)
-
-
-
 
 
 def main():
