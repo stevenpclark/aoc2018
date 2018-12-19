@@ -1,6 +1,8 @@
 import numpy as np
+from PIL import Image
 
 SAND, FLOW, POOL, CLAY = range(4)
+colors = np.array([[0,0,0],[0,180,255],[0,0,255],[150,100,0]], dtype=np.uint8)
 
 def do_flow(grid, r, c, r_max):
     assert grid[r,c] == SAND
@@ -91,6 +93,11 @@ def solve(fn,start_col=500):
     last_total = 0
     do_flow(grid, 0, start_col, r_max)
 
+    color_grid = colors[grid[r_min:r_max+1, c_min:c_max]]
+    print(color_grid.shape)
+    img = Image.fromarray(color_grid,'RGB')
+    img.save('flow.png')
+
     unique, counts = np.unique(grid[r_min:r_max+1, :], return_counts=True)
     count_map = dict(zip(unique,counts))
     total = count_map.get(POOL,0)+count_map.get(FLOW,0)
@@ -106,9 +113,9 @@ def check(fn, expected, min_start_col=500, max_start_col=500):
 
 
 def main():
-    check('test1.txt', 57, 499, 501)
-    check('test2.txt', 50, 498, 505)
-    check('test5.txt', 3, 499, 501)
+    #check('test1.txt', 57, 499, 501)
+    #check('test2.txt', 50, 498, 505)
+    #check('test5.txt', 3, 499, 501)
     print(solve('input.txt'))
 
 if __name__ == '__main__':
