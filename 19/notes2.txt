@@ -1,0 +1,17 @@
+a = 0
+b = 0
+pc = 0
+e = 1
+
+if part1:
+    d = 888
+    f = 52
+else:
+    d = 10551288
+    f = 10550400
+
+
+for e in range(1,d+1):
+    for b in range(1,d+1):
+        if b*e == d:
+            a += e
