@@ -40,12 +40,12 @@ def bori(r, a, b, c):
     r2[c] = r[a]|b
     return r2
 
-def setr(r, a, b, c):
+def setr(r, a, _, c):
     r2 = r[:]
     r2[c] = r[a]
     return r2
 
-def seti(r, a, b, c):
+def seti(r, a, _, c):
     r2 = r[:]
     r2[c] = a
     return r2

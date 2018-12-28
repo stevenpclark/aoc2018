@@ -1,0 +1,40 @@
+#ip 4
+00      c = 123
+01      c = c & 456
+02      c = int(c==72)  if c==72 goto 5 else goto 1
+03      p += c          -
+04      p = 0           -
+
+05      c = 0
+
+06      f = c | 65536
+07      c = 5234604 
+
+08      d = f & 255
+09      c += d
+10      c = c & 16777215
+11      c *= 65899
+12      c = c & 16777215
+13      d = int(256>f)  if f<256 goto 28 else goto 17
+14      p += d          -
+15      p++             -
+16      p = 27          -
+
+17      d = 0
+
+18      b = d+1         -
+19      b *= 256        -
+20      b = int(b>f)    if ((d+1)*256)>f goto 26 else goto 24
+21      p += b          -
+22      p++             -
+23      p = 25          -
+
+24      d++             
+25      p = 17          (goto 18)
+
+26      f = d
+27      p = 7           (goto 8)
+
+28      d = int(c==r0)  if c==r0 exit else goto 6
+29      p += d          -
+30      p = 5           -
